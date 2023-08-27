@@ -11,15 +11,22 @@ abstract class Producto implements Descuento {
     private double porcentajeDescuento;
 	
     // Constructor
-   	public Producto(String identificador, String descripcion, int cantidadEnStock, double precioPorUnidad,
-   			double costoPorUnidad, boolean disponibleParaVenta, double porcentajeDescuento) {
+   	public Producto(
+   		String identificador,
+   		String descripcion,
+   		double precioPorUnidad,
+   		double costoPorUnidad
+   	) {
    		this.identificador = identificador;
    		this.descripcion = descripcion;
-   		this.cantidadEnStock = cantidadEnStock;
    		this.precioPorUnidad = precioPorUnidad;
    		this.costoPorUnidad = costoPorUnidad;
-   		this.disponibleParaVenta = disponibleParaVenta;
-   		this.porcentajeDescuento = porcentajeDescuento;
+   	
+   		// Entiendo que por defecto los siguientes atributos se setearian con los mismos valores que declaro,
+   		// pero de todas formas los inicializo asi
+   		this.disponibleParaVenta = false;
+   		this.cantidadEnStock = 0;
+   		this.porcentajeDescuento = 0.0;
    	}
    	
     
@@ -67,8 +74,7 @@ abstract class Producto implements Descuento {
 		this.porcentajeDescuento = porcentajeDescuento;
 	}
     
-//Metodos descuento//
-	
+	//Metodos descuento//
 	 public double getPrecioVentaConDescuento() {
 	 	double precioFinal=precioPorUnidad-(precioPorUnidad*porcentajeDescuento);
 	 	return precioFinal;

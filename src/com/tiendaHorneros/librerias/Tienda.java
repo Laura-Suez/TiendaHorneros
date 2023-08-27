@@ -54,42 +54,52 @@ public class Tienda {
 	}
 
 
-	private int getCantidadProductosEnStock() {
-		return cantidadProductosEnStock;
-	}
-
-
 	private void setCantidadProductosEnStock(int cantidadProductosEnStock) {
 		this.cantidadProductosEnStock = cantidadProductosEnStock;
 	}
 
 
-	public void comprarProducto(Producto producto) {
-		double importeTotalAPagar = producto.getCostoPorUnidad() * producto.getCantidadEnStock();
+	public void comprarProducto(Producto producto, int cantidadAComprar) {
+		double importeTotalAPagar = producto.getCostoPorUnidad() * cantidadAComprar;
 		
-		if(importeTotalAPagar > this.getSaldoEnCaja()) {
+		if(importeTotalAPagar > this.saldoEnCaja) {
 			System.out.println("El producto no puede ser agregado por saldo insuficiente.");
 			return;
 		}
 		
-		if(this.getCantidadProductosEnStock() + producto.getCantidadEnStock() > this.maxProductosEnStock) {
+		if(this.cantidadProductosEnStock + cantidadAComprar > this.maxProductosEnStock) {
 			// Para simplificar, rechazamos todas las unidades del producto si al sumarlas se pasa del total.
 			System.out.println("El producto no puede ser agregado por insuficiencia de espacio de stock.");
 			return;
 		}
 		
+		
 		// Actualizamos el saldo en caja
-		double nuevoSaldoEnCaja = this.getSaldoEnCaja() - importeTotalAPagar;
+		double nuevoSaldoEnCaja = this.saldoEnCaja - importeTotalAPagar;
 		this.setSaldoEnCaja(nuevoSaldoEnCaja);
 		
-		// Actualizamos la cantidad de productos en stock
-		int nuevaCantidadProductosEnStock = this.getCantidadProductosEnStock() + producto.getCantidadEnStock();
+		// Actualizamos la cantidad total de productos en stock de la tienda
+		int nuevaCantidadProductosEnStock = this.cantidadProductosEnStock + cantidadAComprar;
 		this.setCantidadProductosEnStock(nuevaCantidadProductosEnStock);
 		
-		// Por defecto, todos los productos estan disponible para la venta al ser comprados
 		producto.setDisponibleParaVenta(true);
-		
+		producto.setCantidadEnStock(cantidadAComprar);
 		
         productosEnStock.put(producto.getIdentificador(), producto);
     }
+
+	public void venderProducto(List<Producto> productos, List<Integer> cantidadesVendidas) {
+		if (productos.size() > 3) {
+			System.out.println("No se puede vender mas de 3 productos distintos.");
+			return;
+		}
+		
+		cantidadesVendidas.forEach(cantidadVendida -> {
+			if (cantidadVendida > 10) {
+				System.out.println("No se puede vender mas de 10 productos distintos.");
+				return;
+			}
+		});
+ 	}
+
 }

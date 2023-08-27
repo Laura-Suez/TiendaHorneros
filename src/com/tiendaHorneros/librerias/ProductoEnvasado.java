@@ -8,11 +8,10 @@ public class ProductoEnvasado extends Producto implements Comestible{
         private LocalDate fechaVencimiento;
         private int calorias;
         
-        public ProductoEnvasado(String identificador, String descripcion, int cantidadEnStock, double precioPorUnidad,
-				double costoPorUnidad, boolean disponibleParaVenta, double porcentajeDescuento, TipoEnvase tipoEnvase,
+        public ProductoEnvasado(String identificador, String descripcion, double precioPorUnidad,
+				double costoPorUnidad, TipoEnvase tipoEnvase,
 				boolean importado,LocalDate fechaVencimiento,int calorias) {
-			super(identificador, descripcion, cantidadEnStock, precioPorUnidad, costoPorUnidad, disponibleParaVenta,
-					porcentajeDescuento);
+			super(identificador, descripcion,precioPorUnidad, costoPorUnidad);
 			this.tipoEnvase = tipoEnvase;
 			this.importado = importado;
 			this.fechaVencimiento=fechaVencimiento;

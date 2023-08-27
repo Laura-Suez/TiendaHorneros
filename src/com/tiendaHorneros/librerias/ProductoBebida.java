@@ -7,12 +7,10 @@ public class ProductoBebida extends Producto implements Comestible{
     private double graduacionAlcoholica;
     private LocalDate fechaVencimiento;
     private int calorias;
-	
-    public ProductoBebida(String identificador, String descripcion, int cantidadEnStock, double precioPorUnidad,
-			double costoPorUnidad, boolean disponibleParaVenta, double porcentajeDescuento, boolean esAlcoholica,
-			double graduacionAlcoholica,LocalDate fechaVencimiento,int calorias) {
-		super(identificador, descripcion, cantidadEnStock, precioPorUnidad, costoPorUnidad, disponibleParaVenta,
-				porcentajeDescuento);
+    	
+    public ProductoBebida(String identificador, String descripcion, double precioPorUnidad, double costoPorUnidad,
+    		boolean esAlcoholica, double graduacionAlcoholica,LocalDate fechaVencimiento,int calorias) {
+		super(identificador, descripcion, precioPorUnidad, costoPorUnidad);
 		this.esAlcoholica = esAlcoholica;
 		this.graduacionAlcoholica = graduacionAlcoholica;
 		this.fechaVencimiento=fechaVencimiento;

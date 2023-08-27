@@ -9,12 +9,10 @@ public class ProductoLimpieza extends Producto {
 
     // Constructor
 	
-	public ProductoLimpieza(String identificador, String descripcion, int cantidadEnStock, double precioPorUnidad,
-			double costoPorUnidad, boolean disponibleParaVenta, double porcentajeDescuento,
-			TipoAplicacion tipoAplicacion) {
-		super(identificador, descripcion, cantidadEnStock, precioPorUnidad, costoPorUnidad, disponibleParaVenta,
-				porcentajeDescuento);
-		this.tipoAplicacion = tipoAplicacion;
+	public ProductoLimpieza(String identificador, String descripcion, double precioPorUnidad,
+			double costoPorUnidad,TipoAplicacion tipoAplicacion) {
+			super(identificador, descripcion, precioPorUnidad, costoPorUnidad);
+			this.tipoAplicacion = tipoAplicacion;
 	}
 
 

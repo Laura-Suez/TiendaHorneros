@@ -1,6 +1,6 @@
 package com.tiendaHorneros.librerias;
 
-public enum TipoAplicacion {
+public enum TipoAplicacion{
 	COCINA,
     PISOS,
     ROPA,
